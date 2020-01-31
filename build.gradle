@@ -1,0 +1,18 @@
+plugins {
+    id 'java-library'
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+	// https://mvnrepository.com/artifact/com.fazecast/jSerialComm
+	compile group: 'com.fazecast', name: 'jSerialComm', version: '2.5.3'
+}
+
+jar {
+	from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+	}
+}
