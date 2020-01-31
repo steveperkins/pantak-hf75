@@ -1,10 +1,10 @@
 # pantak-hf75
-Java serial driver for [Pantak HF75 X-ray emitter](http://korins.com/m/td/tes06.htm). It may work with other machines in the Pantak HF family but has only been tested with the Pantak HF75.
+Java serial driver for [Pantak HF 75 X-ray generator](http://korins.com/m/td/tes06.htm). It may work with other machines in the Pantak HF family but has only been tested with the Pantak HF 75.
 
-This driver is thread-safe - one `PantakDriver` instance can be accessed simultaneously by multiple threads without garbling serial port communication. The library controls access to the underlying serial port and waits for a Pantak HF75 response before allowing a new command to be sent.
+This driver is thread-safe - one `PantakDriver` instance can be accessed simultaneously by multiple threads without garbling serial port communication. The library controls access to the underlying serial port and waits for a Pantak HF 75 response before allowing a new command to be sent.
 
-This driver provides a high-level Java interface to interact with the Pantak HF75 and provides these functions:
-* Connect to HF75
+This driver provides a high-level Java interface to interact with the Pantak HF 75 and provides these functions:
+* Connect to HF 75
 * Check serial connection
 * Disconnect and stop emitting
 * Start emitting
@@ -12,11 +12,11 @@ This driver provides a high-level Java interface to interact with the Pantak HF7
 * Get milliamps right now
 * Check warm-up condition
 * Override warm-up condition
-* Check whether Pantak HF75 is currently emitting
+* Check whether Pantak HF 75 is currently emitting
 * Get interlock states via indices
 * Get broken interlocks as comma-separated interlock names
 
-Note that although this library provides some minimal input validations, it does NOT perform extensive checks to prevent consumers from destroying their Pantak HF75s or any of the associated parts (e.g. the tube). It is the consumer's responsibility to ensure the machine can tolerate the settings that will be used. NO WARRANTY IS PROVIDED for this library.
+Note that although this library provides some minimal input validations, it does NOT perform extensive checks to prevent consumers from destroying their Pantak HF 75s or any of the associated parts (e.g. the tube). It is the consumer's responsibility to ensure the machine can tolerate the settings that will be used. NO WARRANTY IS PROVIDED for this library.
 
 ## Installation
 Download the latest compiled JAR from the [dist folder](dist/) and add it to your project's build path.
@@ -46,21 +46,21 @@ driver.getInterlockErrors();
 driver.isWarmedUp();
 ```
 
-If the Pantak HF75 hasn't been used in the past 4 hours, it needs to warm up the tube before emitting again. You can tell the Pantak HF75 to bypass this safety check by using `driver.overrideWarmup()`. Bypassing warm-up and starting emission can damage your tube, so be careful with this.
+If the Pantak HF 75 hasn't been used in the past 4 hours, it needs to warm up the tube before emitting again. You can tell the Pantak HF 75 to bypass this safety check by using `driver.overrideWarmup()`. Bypassing warm-up and starting emission can damage your tube, so be careful with this.
 
 ### Turn on X-rays
 ```
 driver.startEmitting(10, 30); // kV, mA
 ```
 
-You need to verify that the specified kV and mA won't harm the Pantak HF75. pantak-hf75 provides minimal checks to prevent damage - specifically, it prevents the given kV and mA from exceeding the set limits for the Pantak HF75.
+You need to verify that the specified kV and mA won't harm the Pantak HF 75. pantak-HF 75 provides minimal checks to prevent damage - specifically, it prevents the given kV and mA from exceeding the set limits for the Pantak HF 75.
 
 ### Turn off X-rays
 ```
 driver.stopEmitting();
 ```
 
-You can verify the Pantak HF75 is no longer emitting with `driver.isEmitting()`, which returns a boolean to indicate emission state.
+You can verify the Pantak HF 75 is no longer emitting with `driver.isEmitting()`, which returns a boolean to indicate emission state.
 
 ### Disconnect
 ```
@@ -94,7 +94,7 @@ driver.getMa();
 driver.disableWriteToConsole();
 ```
 
-By default pantak-hf75 logs communications to/from the serial port and error messages to the console. You can turn this off with `disableWriteToConsole()`.
+By default pantak-HF 75 logs communications to/from the serial port and error messages to the console. You can turn this off with `disableWriteToConsole()`.
 
 ### Enable console output
 ```
